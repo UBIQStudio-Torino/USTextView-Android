@@ -1,4 +1,30 @@
+import groovy.json.JsonSlurper
+
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+
+uploadArchives {
+
+    String user_home = System.getProperty("user.home")
+    File archiva_json = new File(user_home + "/archiva.json")
+
+    if (!archiva_json.exists()) {
+        throw new GradleException(archiva_json.path + " not found")
+    }
+
+    def archiva = new JsonSlurper().parseText(archiva_json.text)
+
+    repositories {
+        mavenDeployer {
+            pom.groupId = 'com.ubiqstudio'
+            pom.artifactId = 'ustextview'
+            pom.version = '1.0'
+            repository(url: archiva.repository.url) {
+                authentication(userName: archiva.repository.user, password: archiva.repository.password)
+            }
+        }
+    }
+}
 
 android {
     compileSdkVersion 22
