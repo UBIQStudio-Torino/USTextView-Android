@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	
-	<declare-styleable name="USTextView">
-		<attr name="fontFamily" format="string" />
-		<attr name="fontFace" format="string" />
-		<attr name="html" format="string" />
+	<declare-styleable name="TextView">
+		<attr name="usFontFamily" format="string" />
+		<attr name="usFontFace" format="string" />
+		<attr name="usHtml" format="string" />
 	</declare-styleable>
 	
 </resources>

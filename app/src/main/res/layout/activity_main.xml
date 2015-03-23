@@ -11,16 +11,16 @@
 
     <com.ubiqstudio.ustextview.USTextView
         android:id="@+id/ciao"
-        app:fontFamily="NewJune"
-        app:fontFace="NewJune-Bold.otf"
+        app:usFontFamily="NewJune"
+        app:usFontFace="NewJune-Bold.otf"
         android:text="Ciao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <com.ubiqstudio.ustextview.USTextView
         android:id="@+id/mondo"
-        app:fontFamily="NewJune"
-        app:fontFace="NewJune-Book.otf"
+        app:usFontFamily="NewJune"
+        app:usFontFace="NewJune-Book.otf"
         android:text="mondo"
         android:layout_toRightOf="@+id/ciao"
         android:layout_marginLeft="10dp"
@@ -28,8 +28,8 @@
         android:layout_height="wrap_content" />
 
     <com.ubiqstudio.ustextview.USTextView
-        app:fontFamily="NewJune"
-        app:fontFace="NewJune-Regular.otf"
+        app:usFontFamily="NewJune"
+        app:usFontFace="NewJune-Regular.otf"
         android:text="bellissimo"
         android:layout_toRightOf="@+id/mondo"
         android:layout_marginLeft="10dp"
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content" />
 
     <com.ubiqstudio.ustextview.USTextView
-        app:fontFamily="OpenSans"
-        app:html="@string/ciao_mondo_bellissimo"
+        app:usFontFamily="OpenSans"
+        app:usHtml="@string/ciao_mondo_bellissimo"
         android:layout_below="@+id/ciao"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
