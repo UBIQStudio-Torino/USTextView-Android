@@ -24,7 +24,8 @@ public class USTextView extends TextView {
 	}
 	
 	private void init(AttributeSet attrs) {
-        _generic = new USGeneric<TextView>(this, attrs);
+        _generic = new USGeneric<TextView>(this);
+        _generic.init(attrs);
 	}
 	
 }

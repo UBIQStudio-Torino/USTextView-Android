@@ -24,7 +24,8 @@ public class USButton extends Button {
 	}
 	
 	private void init(AttributeSet attrs) {
-        _generic = new USGeneric<Button>(this, attrs);
+        _generic = new USGeneric<Button>(this);
+        _generic.init(attrs);
 	}
 	
 }

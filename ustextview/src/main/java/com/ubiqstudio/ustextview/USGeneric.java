@@ -1,34 +1,47 @@
 package com.ubiqstudio.ustextview;
 
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.TypefaceSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
 public class USGeneric<T extends TextView> {
+
+    private T _textView;
 	
 	private String _fontFamily;
 	private String _fontFace;
 	private CharSequence _html;
-	
-	public USGeneric(T textView, AttributeSet attrs) {
+    private String _placeholder;
+
+    public USGeneric(T textView) {
+        _textView = textView;
+    }
+
+    public void init(AttributeSet attrs) {
 		if (attrs == null) {
 			_fontFamily = null;
 			_fontFace = null;
 			_html = null;
+            _placeholder = null;
 			return;
 		}
 		
-		TypedArray attrsArray = textView.getContext().obtainStyledAttributes(attrs, R.styleable.TextView);
+		TypedArray attrsArray = _textView.getContext().obtainStyledAttributes(attrs, R.styleable.TextView);
 		_fontFamily = attrsArray.getString(R.styleable.TextView_usFontFamily);
 		_fontFace = attrsArray.getString(R.styleable.TextView_usFontFace);
 		_html = attrsArray.getText(R.styleable.TextView_usHtml);
+        _placeholder = attrsArray.getString(R.styleable.TextView_usPlaceholder);
 		attrsArray.recycle();
 		
 		if (_fontFamily == null) {
@@ -50,8 +63,8 @@ public class USGeneric<T extends TextView> {
 			}
 			
 			if (!_fontFace.isEmpty()) {
-				if (!textView.isInEditMode()) {
-                    textView.setTypeface(USTypefaceLoader.getTypeface(textView.getContext().getAssets(), path.concat(_fontFace)));
+				if (!_textView.isInEditMode()) {
+                    _textView.setTypeface(USTypefaceLoader.getTypeface(_textView.getContext().getAssets(), path.concat(_fontFace)));
 				}
 			}
 			
@@ -64,7 +77,7 @@ public class USGeneric<T extends TextView> {
 		}
 		
 		if (spanned == null) {
-            textView.setText(Html.fromHtml(_html.toString()));
+            _textView.setText(Html.fromHtml(_html.toString()));
 			return;
 		}
 		
@@ -96,14 +109,32 @@ public class USGeneric<T extends TextView> {
 		
 		for (TypefaceSpan span : editable.getSpans(0, editable.length(), TypefaceSpan.class)) {
 			USTypefaceSpan customSpan = new USTypefaceSpan(_fontFamily);
-			if (!textView.isInEditMode()) {
-				customSpan.setTypeface(USTypefaceLoader.getTypeface(textView.getContext().getAssets(), path.concat(span.getFamily())));
+			if (!_textView.isInEditMode()) {
+				customSpan.setTypeface(USTypefaceLoader.getTypeface(_textView.getContext().getAssets(), path.concat(span.getFamily())));
 			}
 			editable.setSpan(customSpan, editable.getSpanStart(span), editable.getSpanEnd(span), editable.getSpanFlags(span));
 			editable.removeSpan(span);
 		}
 
-        textView.setText(editable);
+        _textView.setText(editable);
 	}
 	
+    public void onDraw(Canvas canvas) {
+        if (_placeholder == null) {
+            return;
+        }
+
+        if (_textView.getText().length() > 0) {
+            return;
+        }
+
+        Rect lineBounds = new Rect();
+        int baselineTop = _textView.getLineBounds(0, lineBounds);
+
+        TextPaint placeholderPaint = new TextPaint(_textView.getPaint());
+        placeholderPaint.setColor(Color.GRAY);
+
+        canvas.drawText(_placeholder, lineBounds.left, baselineTop, placeholderPaint);
+    }
+
 }

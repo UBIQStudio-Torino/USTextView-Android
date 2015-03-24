@@ -1,6 +1,7 @@
 package com.ubiqstudio.ustextview;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
@@ -24,7 +25,14 @@ public class USEditText extends EditText {
 	}
 	
 	private void init(AttributeSet attrs) {
-        _generic = new USGeneric<EditText>(this, attrs);
+        _generic = new USGeneric<EditText>(this);
+        _generic.init(attrs);
 	}
 	
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        _generic.onDraw(canvas);
+    }
+
 }

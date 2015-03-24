@@ -5,6 +5,7 @@
 		<attr name="usFontFamily" format="string" />
 		<attr name="usFontFace" format="string" />
 		<attr name="usHtml" format="string" />
+        <attr name="usPlaceholder" format="string" />
 	</declare-styleable>
 	
 </resources>

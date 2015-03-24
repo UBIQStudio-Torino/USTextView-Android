@@ -37,11 +37,34 @@
         android:layout_height="wrap_content" />
 
     <com.ubiqstudio.ustextview.USTextView
+        android:id="@+id/html_test"
         app:usFontFamily="OpenSans"
         app:usHtml="@string/ciao_mondo_bellissimo"
         android:layout_below="@+id/ciao"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.ubiqstudio.ustextview.USEditText
+        android:id="@+id/edit1"
+        android:text="Edit 1"
+        app:usPlaceholder="Placeholder 1"
+        android:layout_below="@+id/html_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.ubiqstudio.ustextview.USEditText
+        android:id="@+id/edit2"
+        app:usHtml="Edit 2"
+        app:usPlaceholder="Placeholder 2"
+        android:layout_below="@+id/edit1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.ubiqstudio.ustextview.USEditText
+        app:usPlaceholder="Placeholder 3"
+        android:layout_below="@+id/edit2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
 </RelativeLayout>
