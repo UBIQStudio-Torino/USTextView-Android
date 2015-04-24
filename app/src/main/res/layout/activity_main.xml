@@ -62,8 +62,16 @@
         android:layout_height="wrap_content" />
 
     <com.ubiqstudio.ustextview.USEditText
+        android:id="@+id/edit3"
         app:usPlaceholder="Placeholder 3"
         android:layout_below="@+id/edit2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.ubiqstudio.ustextview.USEditText
+        app:usPlaceholder="Placeholder 4"
+        android:enabled="false"
+        android:layout_below="@+id/edit3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

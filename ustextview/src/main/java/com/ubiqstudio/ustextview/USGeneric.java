@@ -128,6 +128,10 @@ public class USGeneric<T extends TextView> {
             return;
         }
 
+        if (!_textView.isEnabled()) {
+            return;
+        }
+
         Rect lineBounds = new Rect();
         int baselineTop = _textView.getLineBounds(0, lineBounds);
 
