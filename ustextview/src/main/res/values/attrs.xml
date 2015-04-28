@@ -6,6 +6,7 @@
 		<attr name="usFontFace" format="string" />
 		<attr name="usHtml" format="string" />
         <attr name="usPlaceholder" format="string" />
+        <attr name="usPlaceholderOnDisabled" format="boolean" />
 	</declare-styleable>
 	
 </resources>

@@ -23,6 +23,7 @@ public class USGeneric<T extends TextView> {
 	private String _fontFace;
 	private CharSequence _html;
     private String _placeholder;
+    private boolean _placeholderOnDisabled;
 
     public USGeneric(T textView) {
         _textView = textView;
@@ -34,6 +35,7 @@ public class USGeneric<T extends TextView> {
 			_fontFace = null;
 			_html = null;
             _placeholder = null;
+            _placeholderOnDisabled = true;
 			return;
 		}
 		
@@ -42,6 +44,7 @@ public class USGeneric<T extends TextView> {
 		_fontFace = attrsArray.getString(R.styleable.TextView_usFontFace);
 		_html = attrsArray.getText(R.styleable.TextView_usHtml);
         _placeholder = attrsArray.getString(R.styleable.TextView_usPlaceholder);
+        _placeholderOnDisabled = attrsArray.getBoolean(R.styleable.TextView_usPlaceholderOnDisabled, true);
 		attrsArray.recycle();
 		
 		if (_fontFamily == null) {
@@ -129,7 +132,9 @@ public class USGeneric<T extends TextView> {
         }
 
         if (!_textView.isEnabled()) {
-            return;
+            if (!_placeholderOnDisabled) {
+                return;
+            }
         }
 
         Rect lineBounds = new Rect();
