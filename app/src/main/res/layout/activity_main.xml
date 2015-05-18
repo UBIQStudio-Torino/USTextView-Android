@@ -77,10 +77,19 @@
         android:layout_height="wrap_content" />
 
     <com.ubiqstudio.ustextview.USEditText
+        android:id="@+id/edit5"
         app:usPlaceholder="Placeholder 5"
         app:usPlaceholderOnDisabled="false"
         android:enabled="false"
         android:layout_below="@+id/edit4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.ubiqstudio.ustextview.USEditText
+        android:id="@+id/edit6"
+        app:usPlaceholder="Placeholder 6"
+        app:usPlaceholderColor="#FF0000"
+        android:layout_below="@+id/edit5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

@@ -23,10 +23,15 @@ public class USGeneric<T extends TextView> {
 	private String _fontFace;
 	private CharSequence _html;
     private String _placeholder;
+    private int _placeholderColor;
     private boolean _placeholderOnDisabled;
 
     public USGeneric(T textView) {
         _textView = textView;
+    }
+
+    public void setPlaceholderColor(int placeholderColor) {
+		_placeholderColor = placeholderColor;
     }
 
     public void init(AttributeSet attrs) {
@@ -35,6 +40,7 @@ public class USGeneric<T extends TextView> {
 			_fontFace = null;
 			_html = null;
             _placeholder = null;
+			_placeholderColor = Color.GRAY;
             _placeholderOnDisabled = true;
 			return;
 		}
@@ -44,6 +50,7 @@ public class USGeneric<T extends TextView> {
 		_fontFace = attrsArray.getString(R.styleable.TextView_usFontFace);
 		_html = attrsArray.getText(R.styleable.TextView_usHtml);
         _placeholder = attrsArray.getString(R.styleable.TextView_usPlaceholder);
+		_placeholderColor = attrsArray.getColor(R.styleable.TextView_usPlaceholderColor, Color.GRAY);
         _placeholderOnDisabled = attrsArray.getBoolean(R.styleable.TextView_usPlaceholderOnDisabled, true);
 		attrsArray.recycle();
 		
@@ -141,7 +148,7 @@ public class USGeneric<T extends TextView> {
         int baselineTop = _textView.getLineBounds(0, lineBounds);
 
         TextPaint placeholderPaint = new TextPaint(_textView.getPaint());
-        placeholderPaint.setColor(Color.GRAY);
+		placeholderPaint.setColor(_placeholderColor);
 
         canvas.drawText(_placeholder, lineBounds.left, baselineTop, placeholderPaint);
     }

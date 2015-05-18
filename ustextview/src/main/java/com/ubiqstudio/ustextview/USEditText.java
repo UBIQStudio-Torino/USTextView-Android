@@ -35,4 +35,8 @@ public class USEditText extends EditText {
         _generic.onDraw(canvas);
     }
 
+	public void setPlaceholderColor(int placeholderColor) {
+		_generic.setPlaceholderColor(placeholderColor);
+	}
+
 }
