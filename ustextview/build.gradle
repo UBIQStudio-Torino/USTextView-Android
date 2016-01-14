@@ -18,7 +18,7 @@ uploadArchives {
         mavenDeployer {
             pom.groupId = 'com.ubiqstudio'
             pom.artifactId = 'ustextview'
-            pom.version = '2.4'
+            pom.version = '2.5'
             repository(url: archiva.repository.url) {
                 authentication(userName: archiva.repository.user, password: archiva.repository.password)
             }
@@ -27,14 +27,14 @@ uploadArchives {
 }
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 22
-        versionCode 240
-        versionName "2.4"
+        targetSdkVersion 23
+        versionCode 250
+        versionName "2.5"
     }
     buildTypes {
         release {

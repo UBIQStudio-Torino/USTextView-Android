@@ -30,7 +30,11 @@ public class USGeneric<T extends TextView> {
         _textView = textView;
     }
 
-    public void setPlaceholderColor(int placeholderColor) {
+    public void setPlaceholder(String placeholder) {
+		_placeholder = placeholder;
+    }
+
+	public void setPlaceholderColor(int placeholderColor) {
 		_placeholderColor = placeholderColor;
     }
 
