@@ -13,11 +13,12 @@ import android.text.TextPaint;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.TypefaceSpan;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.TextView;
 
 public class USGeneric<T extends TextView> {
 
-    private T _textView;
+    private final T _textView;
 	
 	private String _fontFamily;
 	private String _fontFace;
@@ -154,7 +155,13 @@ public class USGeneric<T extends TextView> {
         TextPaint placeholderPaint = new TextPaint(_textView.getPaint());
 		placeholderPaint.setColor(_placeholderColor);
 
-        canvas.drawText(_placeholder, lineBounds.left, baselineTop, placeholderPaint);
+		Rect placeholderBounds = new Rect();
+		placeholderPaint.getTextBounds(_placeholder, 0, _placeholder.length(), placeholderBounds);
+
+		Rect bounds = new Rect();
+		Gravity.apply(_textView.getGravity(), placeholderBounds.width(), placeholderBounds.height(), lineBounds, bounds, _textView.getLayoutDirection());
+
+		canvas.drawText(_placeholder, bounds.left, baselineTop, placeholderPaint);
     }
 
 }

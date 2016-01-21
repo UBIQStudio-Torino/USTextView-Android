@@ -93,4 +93,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <com.ubiqstudio.ustextview.USEditText
+        android:id="@+id/edit7"
+        app:usPlaceholder="Placeholder 7"
+        android:gravity="center"
+        android:layout_below="@+id/edit6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.ubiqstudio.ustextview.USEditText
+        android:id="@+id/edit8"
+        app:usPlaceholder="Placeholder 8"
+        android:gravity="end"
+        android:layout_below="@+id/edit7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
